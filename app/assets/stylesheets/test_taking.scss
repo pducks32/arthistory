@@ -20,6 +20,9 @@ header.secondary {
     padding: 0.25em 0.75em;
     text-decoration: none;
     text-align: center;
+    appearance: none;
+    -webkit-appearance: none;
+    margin: auto;
   }
 
   display: flex;
@@ -43,6 +46,7 @@ header.secondary {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
+    align-items: center;
     flex: 1 1 20em;
 
     .input-item {

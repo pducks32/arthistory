@@ -31,6 +31,7 @@
     </div>
     <% end %>
     <%= n.fields_for(:year_response) do |f| %>
+      <div class="input-item">
       <%= f.label :answer, "Year" %>
       <% if @question.test.test_configuration.relative_year_style? %>
         <%= f.select :answer, ["Early 1200s", "Middle 1200s", "Late 1200s", "Early 1300s", "Middle 1300s", "Late 1300s", "Early 1400s", "Middle 1400s", "Late 1500s", "Early 1500s", "Middle 1500s", "Late 1500s"] %>
@@ -39,6 +40,7 @@
       <% else %>
         <%= f.text_field :answer %>
       <% end %>
+      </div>
     <% end %>
     <%= n.fields_for(:location_response) do |f| %>
     <div class="input-item">
