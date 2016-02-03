@@ -25,7 +25,7 @@ class TestsController < ApplicationController
                                     artist_style: TestConfiguration.artist_styles.key(test_params[:test_configuration][:artist_style].to_i)
 
     @test = Test.create test_configuration: @config
-    @test.questions = Artwork.all.map do |a|
+    @test.questions = Artwork.all.shuffle.map do |a|
       Question.new(artwork: a)
     end
     @test.save
