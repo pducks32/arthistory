@@ -56,12 +56,19 @@ header.secondary {
     .input-item {
       margin-bottom: 0.5em;
       input, select {
-        font-size: 2em;
         width: 100%;
         max-width: 84vw;
 
         @media (max-width: 30em) {
           font-size: 1.5em;
+        }
+      }
+
+      select {
+        font-size: 4em;
+
+        @media (max-width: 30em) {
+          font-size: 2em;
         }
       }
     }
