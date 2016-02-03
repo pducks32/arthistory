@@ -12,6 +12,7 @@ header.secondary {
 .test-taking {
 
   .action-button {
+    display: block;
     background-color: #92A8D1;
     border: none;
     color: white;
@@ -23,8 +24,9 @@ header.secondary {
     appearance: none;
     -webkit-appearance: none;
     margin: auto;
-    width: 90%;
+    width: 100%;
     align-self: center;
+    margin-top: 0.75em;
   }
 
   display: flex;
