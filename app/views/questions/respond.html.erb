@@ -1,0 +1,30 @@
+
+<header class="secondary">
+  <span>Question #<%= @question_index %></span>
+  <span>Time: <span class="js-clock"></span></span>
+</header>
+<main class="test-taking">
+  <figure class="top">
+    <%= image_tag @question.artwork.image_url %>
+  </figure>
+  <div class="bottom">
+    <div class="input-item">
+      <%= label_tag "Title" %>
+      <%= text_field_tag "", formatted_name(@question.name_response), disabled: true, class: (@question.name_response.correct? ? "correct" : "wrong") %>
+    </div>
+    <div class="input-item">
+      <%= label_tag "Artist" %>
+      <%= text_field_tag "", formatted_artist(@question.artist_response), disabled: true, class: (@question.artist_response.correct? ? "correct" : "wrong") %>
+    </div>
+    <div class="input-item">
+      <%= label_tag "Year" %>
+      <%= text_field_tag "", formatted_year(@question.year_response), disabled: true, class: (@question.year_response.correct? ? "correct" : "wrong") %>
+    </div>
+    <div class="input-item">
+      <%= label_tag "Location (#{@question.artwork.location.class})" %>
+      <%= text_field_tag "", formatted_location(@question.location_response), disabled: true, class: (@question.location_response.correct? ? "correct" : "wrong") %>
+    </div>
+
+  <%= link_to "Next Question", test_question_path(@question.test, params[:id].to_i + 1), class: "action-button" %>
+</div>
+</main>

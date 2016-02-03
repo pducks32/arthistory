@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Artists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Birth</th>
+      <th>Death</th>
+      <th>Artwork</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.name.common %></td>
+        <td><%= artist.birth_date.year %></td>
+        <td><%= artist.death_date.year %></td>
+        <td><%= artist.artwork.map(&:name).to_sentence %></td>
+        <td><%= link_to 'Show', artist %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%# link_to 'New Artist', new_artist_path %>

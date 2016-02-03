@@ -1,0 +1,52 @@
+<header class="secondary">
+  <span>Question #<%= @question_index %></span>
+  <span>Time: <span class="js-clock"></span></span>
+</header>
+<main class="test-taking">
+  <figure class="top">
+    <%= image_tag @question.artwork.image_url %>
+  </figure>
+  <%= form_for(@question, url: respond_test_question_path, method: :post) do |n| %>
+    <% if @question.test.test_configuration.given_name_style? %>
+      <div class="input-item">
+        <%= label_tag "Title" %>
+        <%= text_field_tag "", @question.artwork.name.titleize, disabled: true %>
+      </div>
+    <% else %>
+      <%= n.fields_for(:name_response) do |f| %>
+        <div class="input-item">
+          <%= f.label :answer, "Title" %>
+          <%= f.text_field :answer %>
+        </div>
+      <% end %>
+    <% end %>
+    <%= n.fields_for(:artist_response) do |f| %>
+    <div class="input-item">
+      <%= f.label :answer, "Artist" %>
+      <% if @question.test.test_configuration.dropdown_artist_style? %>
+        <%= f.select :answer, Artist.all.map { |a| [a.common_name, a.id] }%>
+      <% else %>
+        <%= f.text_field :answer %>
+      <% end %>
+    </div>
+    <% end %>
+    <%= n.fields_for(:year_response) do |f| %>
+      <%= f.label :answer, "Year" %>
+      <% if @question.test.test_configuration.relative_year_style? %>
+        <%= f.select :answer, ["Early 1200s", "Middle 1200s", "Late 1200s", "Early 1300s", "Middle 1300s", "Late 1300s", "Early 1400s", "Middle 1400s", "Late 1500s", "Early 1500s", "Middle 1500s", "Late 1500s"] %>
+      <% elsif @question.test.test_configuration.decade_year_style? %>
+        <%= f.select :answer, (120..155).map {|d| "#{d}0s" } %>
+      <% else %>
+        <%= f.text_field :answer %>
+      <% end %>
+    <% end %>
+    <%= n.fields_for(:location_response) do |f| %>
+    <div class="input-item">
+      <%= f.label :answer, "Location (#{@question.artwork.location.class})" %>
+      <%= f.text_field :answer %>
+    </div>
+    <% end %>
+
+  <%= n.submit "Submit", class: "action-button" %>
+  <% end %>
+</main>

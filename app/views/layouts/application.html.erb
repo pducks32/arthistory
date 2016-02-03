@@ -3,12 +3,34 @@
 <head>
   <title>Arthistory</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="site-header">
+  <nav class="left-hand-nav">
+    <ul>
+      <li>
+        <%= link_to "Artists", artists_path %>
+      </li>
+      <li>
+        <%= link_to "Artwork", artwork_index_path %>
+      </li>
+    </ul>
+  </nav>
+  <!--   <h1>
+    Art History Guru
+  </h1> -->
+  <nav class="right-hand-side">
+    <ul>
+      <li>
+        <%= link_to "Practice", setup_tests_path %>
+      </li>
+    </ul>
+  </nav>
+</header>
 
 <%= yield %>
 
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

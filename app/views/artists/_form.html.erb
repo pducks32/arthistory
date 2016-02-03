@@ -1,0 +1,48 @@
+<%= form_for(@artist) do |f| %>
+  <% if @artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+
+      <ul>
+      <% @artist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.fields_for(:name) do |n| %>
+    <% %i(title first middle last full common).each do |a| %>
+      <div class="field">
+        <%= n.label a %><br>
+        <%= n.text_field a %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= f.fields_for(:birth_date) do |n| %>
+    <div class="field">
+      <%= n.label :date, "Date Year" %><br>
+      <%= n.number_field :date %>
+      <%= n.label :approximation, "Approximation?" %>
+      <%= n.check_box :approximation %>
+    </div>
+  <% end %>
+
+  <%= f.fields_for(:death_date) do |n| %>
+    <div class="field">
+      <%= n.label :date %><br>
+      <%= n.number_field :date %>
+      <%= n.label :approximation, "Approximation?" %>
+      <%= n.check_box :approximation %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :vasarian_age %><br>
+    <%= f.number_field :vasarian_age %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

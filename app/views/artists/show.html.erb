@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @artist.name.common %>
+</p>
+
+<ul class="gallery">
+<% @artist.artwork.each do |d| %>
+  <%= link_to d do %>
+    <li>
+    <figure>
+      <%= image_tag d.image_url %>
+      <figcaption><% d.name.titleize %></figcaption>
+    </figure>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Back', artists_path %>

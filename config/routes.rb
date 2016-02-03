@@ -1,4 +1,19 @@
 Rails.application.routes.draw do
+  resources :artwork
+  resources :artists
+  resources(:tests, only: [:new, :create]) do
+    resources(:questions, only: [:show]) do
+      post "respond", on: :member
+    end
+    collection do
+      get "setup"
+    end
+
+    member do
+      get "start"
+      get "finish"
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

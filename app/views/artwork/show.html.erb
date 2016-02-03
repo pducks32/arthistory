@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag @artwork.image_url, class: "artwork-small" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @artwork.name %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @artwork.artist.name.full %>
+</p>
+
+<p>
+  <strong>Medium:</strong>
+  <%= @artwork.medium %>
+</p>
+
+<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
+<%= link_to 'Back', artwork_index_path %>

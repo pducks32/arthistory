@@ -1,0 +1,26 @@
+
+<p>
+  Sorry, I'm very tired so the name matching is a little funky. Basically credit yourself if you think you know it.
+  <br>
+  The rest I tried to make as self explanatroy as I could, sorry if it's a little quirky or ugly but as Cosimo Medici noted: you can't rush art.
+</p>
+<%= form_for(@test) do |f| %>
+  <%= f.fields_for(:test_configuration) do |n| %>
+    <div class="field">
+      <%= n.label :name_style, "Name Setting" %>
+      <%= n.select :name_style, TestConfiguration.name_styles.map { |a, i| [a.titleize, i] } %>
+    </div>
+
+    <div class="field">
+      <%= n.label :artist_style, "Artist Setting" %>
+      <%= n.select :artist_style, TestConfiguration.artist_styles.reject {|a, i| i == 1 }.map { |a, i| [a.titleize, i] } %>
+    </div>
+
+    <div class="field">
+      <%= n.label :year_style, "Year Setting" %>
+      <%= n.select :year_style, TestConfiguration.year_styles.map { |a, i| [a.titleize, i] } %>
+    </div>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

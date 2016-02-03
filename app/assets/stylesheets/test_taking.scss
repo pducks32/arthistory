@@ -1,0 +1,57 @@
+header.secondary {
+  padding: {
+    left: 0.5em;
+    right: 0.5em;
+  };
+  background-color: #92A8D1;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.test-taking {
+
+  .action-button {
+    background-color: #92A8D1;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    border-radius: 0.1em;
+    padding: 0.25em 0.75em;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1em;
+  .top {
+    text-align: center;
+    flex: 3 1 20em;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .edit_question, .bottom {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    flex: 1 1 20em;
+
+    .input-item {
+      input, select {
+        font-size: 2em;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.correct {
+  color: green;
+}
+.wrong {
+  color: red;
+}

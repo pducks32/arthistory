@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<main>
+  <div class="left-panel"><h1>Artwork</h1></div>
+  <ul class="artwork-gallery right-panel">
+    <% @artwork.each do |a| %>
+    <li>
+      <div class="artwork-display">
+        <div class="artwork-display-top">
+          <figure><%= image_tag a.image_url %></figure>
+          <header class="attribution">
+            <span class="title"><%= a.name %></span>
+            <span class="artist">
+              <span class="by-line">by </span>
+              <%= link_to a.artist.name.common, a.artist, class: "artist-link" %>
+            </span>
+          </header>
+        </div>
+        <dl class="artwork-details">
+          <div>
+            <dt>Year</dt>
+            <dd><%= a&.creation_date.year %></dd>
+          </div>
+          <div>
+            <dt>Medium</dt>
+            <dd><%= a.medium.titleize %></dd>
+          </div>
+          <!-- <div>
+            <dt>Patron</dt>
+            <dd>Monks</dd>
+          </div> -->
+          <div>
+            <dt>Place</dt>
+            <dd><%= a.location.description %></dd>
+          </div>
+        </dl>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</main>
+
+<br>
+
+<%# link_to 'New Artwork', new_artwork_path %>
