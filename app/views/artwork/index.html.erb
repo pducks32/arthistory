@@ -1,15 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <main>
-  <div class="left-panel"><h1>Artwork</h1></div>
+  <div class="left-panel">
+    <h1>Artwork</h1>
+    <input type="text" name="Search" placeholder="Search (ex: annunciation)" class="js-search">
+    <button type="button" name="button" onclick="search()">Go</button>
+  </div>
   <ul class="artwork-gallery right-panel">
     <% @artwork.each do |a| %>
-    <li>
+    <li class="artwork-list-item">
       <div class="artwork-display">
         <div class="artwork-display-top">
           <figure><%= image_tag a.image_url %></figure>
           <header class="attribution">
-            <span class="title"><%= a.name %></span>
+            <span class="title js-title"><%= a.name %></span>
             <span class="artist">
               <span class="by-line">by </span>
               <%= link_to a.artist.name.common, a.artist, class: "artist-link" %>
